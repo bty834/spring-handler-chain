@@ -65,9 +65,6 @@ public class DefaultHandlerChain<IN,OUT> implements HandlerChain<IN,OUT> {
         return this.namespace;
     }
 
-
-
-
     public static class DefaultHandlerChainBuilder<IN, OUT> {
         List<Handler<IN, OUT>> handlers = new ArrayList<>();
 

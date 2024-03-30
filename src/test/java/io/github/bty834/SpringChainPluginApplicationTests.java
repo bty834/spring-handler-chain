@@ -14,8 +14,10 @@ public class SpringChainPluginApplicationTests {
     @Test
     public void contextLoads() {
 
+        String namespace = "default";
+
         DefaultHandlerChain<Object, Object> firstChain = HandlerChain.builder().namespace("推单任务")
-                .order(1)
+                .namespace(namespace)
                 .addHandler(new OneHandler())
                 .addHandler(new TwoHandler())
                 .matcher(new AnyMatcher<>())
@@ -23,14 +25,19 @@ public class SpringChainPluginApplicationTests {
                 .build();
 
         DefaultHandlerChain<Object, Object> secondChain = HandlerChain.builder().namespace("推单任务")
-                .order(1)
+                .namespace(namespace)
                 .addHandler(new OneHandler())
                 .addHandler(new ThreeHandler())
                 .matcher(new AnyMatcher<>())
                 .order(2)
                 .build();
 
-        ChainManager.handle("haha", "input", "output");
+        Object inputContext = new Object();
+        Object outputContext = new Object();
+
+        ChainManager.handle("haha", inputContext, outputContext);
+
+
 
     }
 

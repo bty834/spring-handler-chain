@@ -16,7 +16,7 @@ import org.springframework.core.OrderComparator;
  **/
 public class ChainManager {
 
-    private static Map<String, List<HandlerChain>> namespace2Chains = new HashMap<>();
+    private static final Map<String, List<HandlerChain>> namespace2Chains = new HashMap<>();
 
 
     public static void register(HandlerChain chain){
